@@ -19,10 +19,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_21_040420) do
     t.integer "price"
     t.integer "status", default: 0
     t.bigint "user_id", null: false
-    t.bigint "meals_id", null: false
+    t.bigint "meal_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["meals_id"], name: "index_bookings_on_meals_id"
+    t.index ["meal_id"], name: "index_bookings_on_meal_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
@@ -64,7 +64,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_21_040420) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "bookings", "meals", column: "meals_id"
+  add_foreign_key "bookings", "meals"
   add_foreign_key "bookings", "users"
   add_foreign_key "meals", "users"
   add_foreign_key "ratings", "bookings"
