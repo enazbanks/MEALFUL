@@ -5,3 +5,32 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+5.times do
+  user = User.new(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    age: Faker::Number.within(range: 18..99),
+    email: Faker::Internet.email
+  )
+  user.save!(:validate => false)
+end
+
+50.times do
+  meal = Meal.new(
+    name: Faker::Hipster.sentence,
+    description: Faker::Food.description,
+    min_size: Faker::Number.within(range: 1..5),
+    price: Faker::Number.decimal(l_digits: 2, r_digits: 2),
+    category: Faker::Food.ingredient,
+    location: Faker::Address.city,
+    max_size: Faker::Number.within(range: 5..25)
+  )
+  meal.user = User.all.sample
+  if meal.save
+    puts "#{meal.name} saved"
+    puts "#{meal.max_size} saved"
+  else
+    puts "something went wrong"
+  end
+end
