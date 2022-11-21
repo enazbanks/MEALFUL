@@ -20,14 +20,16 @@ end
   meal = Meal.new(
     name: Faker::Hipster.sentence,
     description: Faker::Food.description,
-    size: Faker::Number.within(range: 1..25),
+    min_size: Faker::Number.within(range: 1..5),
     price: Faker::Number.decimal(l_digits: 2, r_digits: 2),
     category: Faker::Food.ingredient,
-    location: Faker::Address.city
+    location: Faker::Address.city,
+    max_size: Faker::Number.within(range: 5..25)
   )
   meal.user = User.all.sample
   if meal.save
     puts "#{meal.name} saved"
+    puts "#{meal.max_size} saved"
   else
     puts "something went wrong"
   end
