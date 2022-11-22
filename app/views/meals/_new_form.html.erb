@@ -1,0 +1,33 @@
+<%= simple_form_for(@meal) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :min_size %>
+    <%= f.input :max_size %>
+    <%= f.input :price %>
+    <%= f.input :category %>
+    <%= f.input :location %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
+
+<%# create_table "meals", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "min_size"
+    t.float "price"
+    t.string "category"
+    t.string "location"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "max_size"
+    t.index ["user_id"], name: "index_meals_on_user_id"
+  end %>
