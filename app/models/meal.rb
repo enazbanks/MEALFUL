@@ -9,10 +9,15 @@ class Meal < ApplicationRecord
 
   def average_rating
     number = ratings.length
-    total = 0
-    ratings.each do |rating|
-      total += rating.value
+    if number.positive?
+      total = 0
+      ratings.each do |rating|
+        total += rating.value
+      end
+      return total unless total.positive?
+
+      return total / number
     end
-    total / number
+    false
   end
 end

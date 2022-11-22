@@ -1,0 +1,13 @@
+.meal-card {
+  position: relative;
+  img {
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+  }
+  a {
+    position: absolute;
+    bottom: 10px;
+    left: 350px;
+  }
+}
