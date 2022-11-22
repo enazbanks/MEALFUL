@@ -1,0 +1,27 @@
+  <div class="col-md-4">
+  <div class="card" style="width: 18rem;" >
+    <img src='https://source.unsplash.com/random/?#{@meal.category.split.join(",")}' class="card-img-top" alt="meal-image">
+    <div id="<%= dom_id meal %>" class="card-body">
+      <p class="card-title">
+        <strong><%= meal.name %></strong>
+      </p>
+
+      <p class="card-text">
+        <%= meal.location %>
+      </p>
+
+      <p class="card-text">
+        <%= meal.description %>
+      </p>
+
+      <p>
+        <i class="fa-soild fa-dollar-sign"></i><%= meal.price %>
+        <i class="fa-solid fa-people-line"></i><%= meal.max_size%>
+      </p>
+
+        <p>
+        <%= link_to "Show this meal", meal_path(meal), class: "btn btn-primary" %>
+      </p>
+    </div>
+  </div>
+  </div>
