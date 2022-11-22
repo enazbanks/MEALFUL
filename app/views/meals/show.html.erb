@@ -1,0 +1,32 @@
+<div>
+  <h1> <%= @meal.name %> </h1>
+          <% url = 'https://source.unsplash.com/random?' + @meal.category.split.join(",") %>
+          <%= image_tag url, width: 300 %>
+  <%= link_to "Book this meal", '#', class: "btn btn-primary"%>
+</div>
+<div class="grid-container">
+    <div class="grid-item-mark">
+      <strong> <%= @meal.category %> </strong>
+        <div>
+          <%= @meal.description %>
+          <div>
+            <%= "$#{@meal.price}" %>
+          </div>
+          <div>
+            <%= "for #{@meal.size} people" %>
+          </div>
+          <table border="1">
+            <tbody>
+              <tr>
+                <td>Rating</td>
+                  <%star = ""%>
+                  <% (@meal.average_rating).times{ |i| star << "⭐"}%>
+                  <%  star << " out of ⭐⭐⭐⭐⭐"%>
+                <td> <%= star %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+  </ul>
+</div>
