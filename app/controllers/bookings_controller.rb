@@ -25,5 +25,3 @@ class BookingsController < ApplicationController
     params.require(:booking).permit(:date, :size)
   end
 end
-
-# @meal.user = current_user
