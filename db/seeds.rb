@@ -11,7 +11,8 @@ User.create(
   last_name: 'admin',
   age: 18,
   email: 'admin@lewagon.com',
-  password: 'admin123'
+  password: 'admin123',
+  admin: true
 )
 
 25.times do
