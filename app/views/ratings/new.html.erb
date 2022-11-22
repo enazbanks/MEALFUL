@@ -1,2 +1,5 @@
-<h1>Ratings#new</h1>
-<p>Find me in app/views/ratings/new.html.erb</p>
+<h1>Rate your meal expereince with: <%= @meal.name %></h1>
+<%= simple_form_for [@meal, @rating] do |f| %>
+  <%= f.input :value, collection: 1..5 %>
+  <%= f.submit %>
+<% end %>
