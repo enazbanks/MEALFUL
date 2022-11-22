@@ -6,7 +6,6 @@ class BookingsController < ApplicationController
   end
 
   def create
-    # need to differentiate host user and booking user
     @booking = Booking.new(booking_params)
     @meal = Meal.find(params[:meal_id])
     @booking.meal = @meal
