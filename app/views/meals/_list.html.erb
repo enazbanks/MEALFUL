@@ -1,0 +1,7 @@
+<div id="meals" class="d-flex flex-wrap justify-content-evenly">
+  <% meals.each do |meal| %>
+    <div class="col-4">
+      <%= render 'meals/meal', {meal: meal} %>
+    </div>
+  <% end %>
+</div>
