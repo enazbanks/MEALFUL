@@ -5,7 +5,7 @@
           <% url = 'https://source.unsplash.com/random?' + @meal.category.split.join(",") %>
           <%= image_tag url%>
         </div>
-        <%= link_to "Book this meal", '#', class: "btn btn-primary"%>
+        <%= link_to "Book this meal", new_meal_booking_path(@meal), class: "btn btn-primary"%>
       </div>
     <div class="d-flex flex-column mb-3 p-5">
       <div>
