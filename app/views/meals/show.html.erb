@@ -1,32 +1,44 @@
-<div>
-  <h1> <%= @meal.name %> </h1>
+<div class="container">
+  <div class="d-flex">
+      <div class="meal-card">
+        <div class="meal-image">
           <% url = 'https://source.unsplash.com/random?' + @meal.category.split.join(",") %>
-          <%= image_tag url, width: 300 %>
-  <%= link_to "Book this meal", '#', class: "btn btn-primary"%>
-</div>
-<div class="grid-container">
-    <div class="grid-item-mark">
-      <strong> <%= @meal.category %> </strong>
-        <div>
-          <%= @meal.description %>
-          <div>
-            <%= "$#{@meal.price}" %>
-          </div>
-          <div>
-            <%= "for #{@meal.size} people" %>
-          </div>
-          <table border="1">
-            <tbody>
-              <tr>
-                <td>Rating</td>
-                  <%star = ""%>
-                  <% (@meal.average_rating).times{ |i| star << "⭐"}%>
-                  <%  star << " out of ⭐⭐⭐⭐⭐"%>
-                <td> <%= star %></td>
-              </tr>
-            </tbody>
-          </table>
+          <%= image_tag url%>
         </div>
+        <%= link_to "Book this meal", '#', class: "btn btn-primary"%>
+      </div>
+    <div class="d-flex flex-column mb-3 p-5">
+      <div>
+        <h1> <%= @meal.name %> </h1>
+      <div>
+      <br>
+      <h2> <strong> <%= @meal.category %> </strong> </h2>
+      <br>
+      <div class ="flex-grow">
+        <%= @meal.description %>
+      </div>
+      <br>
+      <div>
+        <strong> <%= "$#{@meal.price} per " %><i class="fa-solid fa-user-large"></i> </strong>
+      </div>
+      <br>
+      <div>
+         <%= "for #{@meal.size}" %> <i class="fa-solid fa-people-group"></i>
+      </div>
+      <br>
+      <div>
+        <% if @meal.average_rating %>
+          <%  @meal.average_rating.times do %>
+            <i class="fa-solid fa-star yellow-star"></i>
+          <% end %>
+          <%  (5 - @meal.average_rating).times do %>
+            <i class="fa-regular fa-star yellow-star"></i>
+          <% end %>
+          <%= "#{@meal.ratings.length} Ratings" %>
+        <% else %>
+          <%= "Unrated" %>
+        <% end %>
+      </div>
     </div>
-  </ul>
+  </div>
 </div>
