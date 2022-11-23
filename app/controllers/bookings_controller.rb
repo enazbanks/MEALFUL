@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   def index
     @bookings = policy_scope(Booking)
+    @meals = Meal.all
   end
 
   def new
@@ -14,7 +15,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @meal = Meal.find(params[:meal_id])
     @booking.meal = @meal
-    @booking.price = @booking.meal.price * @booking.size
+    @booking.price = @meal.price * @booking.size
     @booking.user = current_user
     authorize @booking
     # @booking.save # => true/false
