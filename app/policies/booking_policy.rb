@@ -16,4 +16,10 @@ class BookingPolicy < ApplicationPolicy
   def create?
     true
   end
+
+  def update?
+    # change back later
+    # record.meal_owner == user
+    true
+  end
 end

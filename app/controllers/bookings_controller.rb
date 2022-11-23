@@ -27,9 +27,20 @@ class BookingsController < ApplicationController
     end
   end
 
+  # PATCH /bookings/:id
+  def update
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    if @booking.update(booking_params)
+      redirect_to bookings_path, status: :see_other, notice: "You've successfully updated your booking"
+    else
+      redirect_to bookings_path, status: :see_other, alert: "Something went wrong while updating booking"
+    end
+  end
+
   private
 
   def booking_params
-    params.require(:booking).permit(:date, :size)
+    params.require(:booking).permit(:date, :size, :status)
   end
 end
