@@ -2,6 +2,7 @@ class BookingsController < ApplicationController
   def new
     @meal = Meal.find(params[:meal_id])
     @booking = Booking.new
+    authorize @booking
     # render 'bookings/new.html.erb'
   end
 
@@ -11,6 +12,7 @@ class BookingsController < ApplicationController
     @booking.meal = @meal
     @booking.price = @booking.meal.price * @booking.size
     @booking.user = current_user
+    authorize @booking
     # @booking.save # => true/false
     if @booking.save
       redirect_to meal_path(@meal)

@@ -6,14 +6,6 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-User.create(
-  first_name: 'admin',
-  last_name: 'admin',
-  age: 18,
-  email: 'admin@lewagon.com',
-  password: 'admin123'
-)
-
 25.times do
   user = User.new(
     first_name: Faker::Name.first_name,
@@ -43,7 +35,7 @@ end
   end
 end
 
-100.times do
+250.times do
   booking = Booking.new(
     date: Faker::Date.between(from: '2020-09-23', to: Date.today),
     price: Faker::Number.decimal(l_digits: 2, r_digits: 2),
@@ -60,7 +52,6 @@ end
     rating.user = booking.user
     rating.booking = booking
     if rating.save
-      puts "rating saved"
     else
       puts "rating wrong"
     end
@@ -68,3 +59,12 @@ end
     puts "booking wrong"
   end
 end
+
+User.create(
+  first_name: 'admin',
+  last_name: 'admin',
+  age: 18,
+  email: 'admin@lewagon.com',
+  password: 'admin123',
+  admin: true
+)

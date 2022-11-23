@@ -4,6 +4,7 @@ class RatingsController < ApplicationController
     if @booking.confirmed?
       @booking = Booking.find(params[:booking_id])
       @rating = Rating.new
+      authorize @rating
     else
       redirect_to meals_path(@meal), status: :see_other, notice: "Unable to create a review"
     end
@@ -14,6 +15,7 @@ class RatingsController < ApplicationController
     @rating = Rating.new(rating_params)
     @booking = Booking.find(params[:booking_id])
     @rating.booking = @booking
+    authorize @rating
     if @rating.save
       redirect_to rating_path(@rating)
     else
