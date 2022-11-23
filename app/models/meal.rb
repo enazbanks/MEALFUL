@@ -1,5 +1,6 @@
 class Meal < ApplicationRecord
   belongs_to :user
+  has_one_attached :photo
   has_many :bookings
   has_many :ratings, through: :bookings
   validates :name, :description, :min_size, :max_size, :price, :category, :location, presence: true
