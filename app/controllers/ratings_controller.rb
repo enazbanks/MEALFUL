@@ -7,13 +7,13 @@ class RatingsController < ApplicationController
   end
 
   def create
-    @rating.user = current_user
     @rating = Rating.new(rating_params)
+    @rating.user = current_user
     @booking = Booking.find(params[:booking_id])
     @rating.booking = @booking
     authorize @rating
     if @rating.save
-      redirect_to rating_path(@rating)
+      redirect_to meal_path(@booking.meal)
     else
       render :new, status: :unprocessable_entity
     end
