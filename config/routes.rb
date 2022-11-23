@@ -14,5 +14,6 @@ Rails.application.routes.draw do
 
   resources :bookings, only: [:index] do
     resources :ratings, only: [:new, :create]
+  end
 
 end
