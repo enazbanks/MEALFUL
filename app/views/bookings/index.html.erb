@@ -1,0 +1,9 @@
+<div id="bookings" class="d-flex flex-wrap justify-content-evenly">
+  <ul>
+    <% @bookings.each do |booking| %>
+      <div class="col">
+          <%= render 'bookings/book', {booking: booking} %>
+      </div>
+    <% end %>
+  </ul>
+</div>
