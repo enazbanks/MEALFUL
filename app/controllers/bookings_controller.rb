@@ -1,4 +1,8 @@
 class BookingsController < ApplicationController
+  def index
+    @bookings = policy_scope(Booking)
+  end
+
   def new
     @meal = Meal.find(params[:meal_id])
     @booking = Booking.new

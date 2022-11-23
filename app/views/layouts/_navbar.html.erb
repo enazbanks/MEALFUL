@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to "/", class: "navbar-brand" do %>
-      <%= image_tag "undraw_breakfast_psiw.png", alt: "Logo" %>
+      <%= image_tag "mealful_logo.png", alt: "Logo" %>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,7 +15,7 @@
             <%= link_to "Host a meal", new_meal_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Bookings", "#", class: "nav-link" %>
+            <%= link_to "Bookings", "/bookings", class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
             <%= image_tag "undraw_Female_avatar_re_l6cx.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
