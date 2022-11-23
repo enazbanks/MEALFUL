@@ -16,6 +16,21 @@
   user.save!(:validate => false)
 end
 
+User.create(
+  first_name: 'Ms',
+  last_name: 'Chef',
+  age: 22,
+  email: 'chef@lewagon.com',
+  password: 'cheftest'
+)
+User.create(
+  first_name: 'Mr',
+  last_name: 'eats',
+  age: 24,
+  email: 'eats@lewagon.com',
+  password: 'eatstest'
+)
+
 50.times do
   title = "#{Faker::Hipster.word} with #{Faker::Food.dish} & #{Faker::Beer.style}"
   meal = Meal.new(
