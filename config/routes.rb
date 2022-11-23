@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   resources :meals, only: [:index, :new, :create, :show] do
     resources :bookings, only: [:new, :create]
   end
+
   resources :bookings, only: [:index] do
     resources :ratings, only: [:new, :create]
-  end
+
 end

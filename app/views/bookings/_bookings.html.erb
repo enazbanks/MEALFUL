@@ -5,8 +5,26 @@
           <%= "#{booking.user.first_name} is booked in for #{booking.date}" %>
           <%= "with #{booking.size}" %> <i class="fa-solid fa-people-group"></i>
           <%= "Total cost $#{booking.price}" %>
-          <%= booking.status %>
         </li>
+        <%= turbo_frame_tag dom_id(booking) do %>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <%= booking.status %>
+            </button>
+            <ul class="dropdown-menu">
+              <% Booking.statuses.keys.each do |status| %>
+                <li>
+                  <%= link_to status,
+                              booking_path(booking, booking: {status: status}),
+                              class: 'dropdown-item',
+                              data: {
+                                turbo_method: :patch
+                              } %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
     <% end %>
   </ul>
 </div>

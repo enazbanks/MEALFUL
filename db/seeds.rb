@@ -31,12 +31,12 @@ User.create(
   password: 'eatstest'
 )
 meal = Meal.create(
-  name: "test meal",
+  name: "Ms Chef's famous Balter Feast",
   description: Faker::Food.description,
   min_size: Faker::Number.within(range: 1..5),
   price: Faker::Number.decimal(l_digits: 2, r_digits: 2),
   category: Faker::Food.ingredient,
-  location: Faker::Address.city,
+  location: "Balter Hq",
   max_size: Faker::Number.within(range: 5..25),
   user: chef
 )
