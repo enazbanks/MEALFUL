@@ -47,5 +47,9 @@
       </div>
     </div>
   </div>
-  <%= render 'bookings/bookings', {meal: @meal} %>
+  <% if policy(@meal).booking? %>
+    <%= render 'bookings/bookings', {meal: @meal} %>
+  <% else %>
+    <%= render 'bookings/user_bookings', {meal: @meal} %>
+  <% end %>
 </div>

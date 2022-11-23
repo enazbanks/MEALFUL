@@ -16,7 +16,7 @@
   user.save!(:validate => false)
 end
 
-User.create(
+chef = User.create(
   first_name: 'Ms',
   last_name: 'Chef',
   age: 22,
@@ -29,6 +29,16 @@ User.create(
   age: 24,
   email: 'eats@lewagon.com',
   password: 'eatstest'
+)
+meal = Meal.create(
+  name: "test meal",
+  description: Faker::Food.description,
+  min_size: Faker::Number.within(range: 1..5),
+  price: Faker::Number.decimal(l_digits: 2, r_digits: 2),
+  category: Faker::Food.ingredient,
+  location: Faker::Address.city,
+  max_size: Faker::Number.within(range: 5..25),
+  user: chef
 )
 
 50.times do
@@ -53,13 +63,14 @@ end
 250.times do
   booking = Booking.new(
     date: Faker::Date.between(from: '2020-09-23', to: Date.today),
-    price: Faker::Number.decimal(l_digits: 2, r_digits: 2),
     status: Faker::Number.within(range: 0..2)
   )
   booking.meal = Meal.all.sample
+
   size = Faker::Number.within(range: booking.meal.min_size..booking.meal.max_size)
   booking.size = size
   booking.user = User.all.sample
+  booking.price = booking.meal.price * booking.size
   if booking.save
     rating = Rating.new(
       value: Faker::Number.within(range: 0..5)
