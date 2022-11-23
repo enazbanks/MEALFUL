@@ -1,8 +1,8 @@
 class RatingsController < ApplicationController
   def new
     # TODO
-    if @booking.confirmed?
-      @booking = Booking.find(params[:booking_id])
+    @booking = Booking.find(params[:booking_id])
+    if @booking.confirmed? && Date.today >= @booking.date
       @rating = Rating.new
       authorize @rating
     else
