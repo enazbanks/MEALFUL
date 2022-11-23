@@ -19,6 +19,19 @@
         <i class="fa-soild fa-dollar-sign"></i><%= meal.price %>
         <i class="fa-solid fa-people-line"></i><%= meal.max_size%>
       </p>
+      <p>
+        <% if meal.average_rating %>
+          <%  meal.average_rating.times do %>
+            <i class="fa-solid fa-star yellow-star"></i>
+          <% end %>
+          <%  (5 - meal.average_rating).times do %>
+            <i class="fa-regular fa-star yellow-star"></i>
+          <% end %>
+          <%= "#{meal.ratings.length} Ratings" %>
+        <% else %>
+          <%= "Unrated" %>
+        <% end %>
+      </p>
 
       <p>
         <%= link_to "Show this meal", meal_path(meal), class: "btn btn-primary" %>
