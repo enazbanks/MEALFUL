@@ -1,0 +1,9 @@
+<h1> Your Meal Listings </h1>
+
+<div id="meals" class="d-flex flex-wrap justify-content-evenly">
+  <% @meals.each do |meal| %>
+    <div class="col">
+      <%= render 'meals/mymeal', {meal: meal} %>
+    </div>
+  <% end %>
+</div>

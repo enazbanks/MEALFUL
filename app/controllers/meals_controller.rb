@@ -25,6 +25,11 @@ class MealsController < ApplicationController
     end
   end
 
+  def my_meals
+    @meals = current_user.meals
+    authorize Meal
+  end
+
   private
 
   def meal_params

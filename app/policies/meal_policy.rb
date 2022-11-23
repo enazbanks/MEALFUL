@@ -21,4 +21,7 @@ class MealPolicy < ApplicationPolicy
     true
   end
 
+  def my_meals?
+    true
+  end
 end
