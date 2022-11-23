@@ -2,12 +2,8 @@ class RatingsController < ApplicationController
   def new
     # TODO
     @booking = Booking.find(params[:booking_id])
-    if @booking.confirmed? && Date.today >= @booking.date
       @rating = Rating.new
       authorize @rating
-    else
-      redirect_to meals_path(@meal), status: :see_other, notice: "Unable to create a review"
-    end
   end
 
   def create
