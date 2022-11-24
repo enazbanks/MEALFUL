@@ -1,7 +1,6 @@
-<div id="meals" class="d-flex flex-wrap justify-content-evenly">
+<%# <div id="meals" class="d-flex flex-wrap"> %>
   <% meals.each do |meal| %>
-    <div class="col">
+    <%# <div class="col"> %>
       <%= render 'meals/meal', {meal: meal} %>
-    </div>
+    <%# </div> %>
   <% end %>
-</div>

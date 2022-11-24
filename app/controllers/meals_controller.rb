@@ -3,6 +3,12 @@ class MealsController < ApplicationController
 
   def index
     @meals = policy_scope(Meal)
+    if params[:query].present?
+      sql_query = "name ILIKE :query OR location ILIKE :query"
+      @meals = Meal.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @meals
+    end
   end
 
   def show
