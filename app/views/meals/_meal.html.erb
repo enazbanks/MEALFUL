@@ -1,7 +1,15 @@
   <div class="col-md-4 p-2">
   <div class="card" style="width: 18rem;" >
-    <% url = 'https://source.unsplash.com/random?' + meal.category.split.join(",") + ' food'%>
-    <%= image_tag url, height: 300%>
+      <% if meal.photo.attached? %>
+           <%= cl_image_tag meal.photo.key, height: 300%>
+        <% else %>
+          <% url = 'https://source.unsplash.com/random?' + meal.category.split.join(",") + '?food' %>
+          <%= image_tag url, height: 300 %>
+          <% cloud = Cloudinary::Uploader.upload(url) %>
+          <% downloaded_image = Down.download(cloud["url"]) %>
+          <% meal.photo.attach(io: downloaded_image  , filename: "#{meal.name}.jpg") %>
+          <% url = 'https://source.unsplash.com/random?' + meal.category.split.join(",") + '?food' %>
+      <% end %>
     <div id="<%= dom_id meal %>" class="card-body">
       <p class="card-title">
         <strong><%= meal.name %></strong>

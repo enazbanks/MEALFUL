@@ -9,6 +9,11 @@ gem "pundit"
 
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
 
+gem "cloudinary"
+
+# https://github.com/janko/down
+gem "down", "~> 5.0"
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4"
 
