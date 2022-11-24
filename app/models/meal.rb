@@ -21,4 +21,11 @@ class Meal < ApplicationRecord
     end
     false
   end
+
+  include PgSearch::Model
+  pg_search_scope :search_by_name_and_location,
+    against: [ :name, :location ],
+    using: {
+      tsearch: { prefix: true }
+    }
 end

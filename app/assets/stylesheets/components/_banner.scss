@@ -2,7 +2,7 @@
   background-size: cover;
   background-position: center;
   padding: 500px 0;
-  background-image: url('banner.png');
+  opacity: .8;
 }
 
 .banner h1 {
@@ -16,6 +16,10 @@
 .banner p {
   font-size: 40px;
   color: white;
-  opacity: .8;
+  // opacity: .8;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.banner_image {
+  background-image: url('banner.png');
 }
