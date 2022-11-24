@@ -2,14 +2,14 @@
 <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 p-2 ">
   <div class="card h-100">
       <% if meal.photo.attached? %>
-           <%= cl_image_tag meal.photo.key, height: 300%>
+           <%= cl_image_tag meal.photo.key, height: 300, width: 300, crop: :fill%>
         <% else %>
-          <% url = 'https://source.unsplash.com/random?' + meal.category.split.join(",") + '?food' %>
-          <%= image_tag url, height: 300 %>
+          <% url = 'https://source.unsplash.com/random?' + meal.category.split.join(",") + ' food' %>
+          <%= image_tag url, height: 300, width: 300, crop: :fill %>
           <% cloud = Cloudinary::Uploader.upload(url) %>
           <% downloaded_image = Down.download(cloud["url"]) %>
           <% meal.photo.attach(io: downloaded_image  , filename: "#{meal.name}.jpg") %>
-          <% url = 'https://source.unsplash.com/random?' + meal.category.split.join(",") + '?food' %>
+          <% url = 'https://source.unsplash.com/random?' + meal.category.split.join(",") + ' food' %>
       <% end %>
 
     <div id="<%= dom_id meal %>" class="card-body">
