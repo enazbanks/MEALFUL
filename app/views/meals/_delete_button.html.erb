@@ -1,0 +1,7 @@
+<div id="<%= dom_id(meal, :delete_button)%>">
+  <% if policy(meal).destroy? %>
+      <%= link_to "Delete", meal_path(meal), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger" %>
+  <% elsif meal.user == current_user %>
+      <%= link_to "Unable to delete with upcoming bookings", meal_path(meal), class: "disabled btn btn-danger" %>
+  <% end %>
+<div>

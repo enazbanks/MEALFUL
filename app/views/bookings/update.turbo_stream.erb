@@ -1,0 +1,6 @@
+<%= turbo_stream.replace dom_id(@booking.meal, :delete_button) do %>
+  <%= render 'meals/delete_button', meal: @booking.meal %>
+<% end %>
+<%= turbo_stream.replace dom_id(@booking) do %>
+  <%= render 'bookings/status_button', booking: @booking %>
+<% end %>
