@@ -7,6 +7,9 @@ export default class extends Controller {
   static targets = [ "date" ]
 
   connect() {
-    flatpickr(this.dateTarget, {})
+    flatpickr(this.dateTarget, {
+      minDate: "today",
+      maxDate: new Date().fp_incr(30)
+    })
   }
 }
