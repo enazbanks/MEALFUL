@@ -1,9 +1,11 @@
-<h1>Edit Your Meal</h1>
-
-<%= render "new_form", meal: @meal %>
-
 <br>
+<div class="container">
+  <h1>Edit Your Meal</h1>
 
-<div>
+  <%= render "new_form", meal: @meal %>
+
+  <br>
+</div>
+<div class="container">
   <%= link_to "Back to meals", meals_path %>
 </div>
