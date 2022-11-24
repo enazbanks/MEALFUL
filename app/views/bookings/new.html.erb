@@ -9,7 +9,7 @@
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
     <div class="form-inputs">
       <%= f.input :date, as: :string, collection: (Date.today)..(Date.today + 30), input_html: { data: { flatpickr_target: "date" } }%>
-      <%= f.input :size, collection: (@meal.min_size..@meal.max_size) %>
+      <%= f.input :size, collection: (@meal.min_size..@meal.max_size), placeholder: 'Number of guests' %>
     </div>
 
     <div class="form-actions">
