@@ -3,14 +3,14 @@
       <div class="meal-card">
         <div class="meal-image">
         <% if @meal.photo.attached? %>
-          <%= cl_image_tag @meal.photo.key, height: 300%>
+          <%= cl_image_tag @meal.photo.key, height: 300, width: 300, crop: :fill%>
         <% else %>
-          <% url = 'https://source.unsplash.com/random?' + meal.category.split.join(",") + '?food' %>
-          <%= image_tag url, height: 300 %>
+          <% url = 'https://source.unsplash.com/random?' + @meal.category.split.join(",") + ' food' %>
+          <%= image_tag url, height: 300, width: 300, crop: :fill%>
           <% cloud = Cloudinary::Uploader.upload(url) %>
           <% downloaded_image = Down.download(cloud["url"]) %>
-          <% meal.photo.attach(io: downloaded_image  , filename: "#{meal.name}.jpg") %>
-          <% url = 'https://source.unsplash.com/random?' + meal.category.split.join(",") + '?food' %>
+          <% @meal.photo.attach(io: downloaded_image , filename: "#{@meal.name}.jpg") %>
+          <% url = 'https://source.unsplash.com/random?' + @meal.category.split.join(",") + ' food' %>
       <% end %>
         </div>
         <% if policy(@meal).edit? %>
