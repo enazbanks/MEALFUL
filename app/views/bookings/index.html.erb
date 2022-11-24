@@ -14,7 +14,7 @@
         <% @meals.each do |meal| %>
           <% if policy(meal).booking? %>
             <div class="col">
-              <%= render 'bookings/bookings', {meal: meal} %>
+              <%= render 'bookings/hosting', {meal: meal} %>
             </div>
           <% end %>
         <% end %>
