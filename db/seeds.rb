@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+    verbs = ['Experience', 'Adventure', 'Encounter', 'Feast', 'Venture', 'Extravaganza']
+
+Faker::Config.locale = 'en-au-ocker'
 25.times do
   user = User.new(
     first_name: Faker::Name.first_name,
@@ -42,13 +45,13 @@ meal = Meal.create(
 )
 
 50.times do
-  title = "#{Faker::Hipster.word} with #{Faker::Food.dish} & #{Faker::Beer.style}"
+  title = "#{(Faker::Hipster.word).capitalize} #{verbs.shuffle.first} alongside #{Faker::Food.dish} & #{Faker::Beer.style}"
   meal = Meal.new(
     name: title,
     description: Faker::Food.description,
     min_size: Faker::Number.within(range: 1..5),
     price: Faker::Number.decimal(l_digits: 2, r_digits: 2),
-    category: Faker::Food.ingredient,
+    category: Faker::Food.ethnic_category,
     location: Faker::Address.city,
     max_size: Faker::Number.within(range: 5..25)
   )
@@ -73,7 +76,7 @@ end
   booking.price = booking.meal.price * booking.size
   if booking.save
     rating = Rating.new(
-      value: Faker::Number.within(range: 0..5)
+      value: Faker::Number.within(range: 2..5)
     )
     rating.user = booking.user
     rating.booking = booking
