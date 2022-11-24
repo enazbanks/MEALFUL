@@ -5,11 +5,12 @@
         <% @bookings.each do |booking| %>
           <div class="col">
               <%= render 'bookings/book', {booking: booking} %>
+
           </div>
         <% end %>
       </ul>
     <div class="col">
-      <h1> Bookings for your Meals </h1>
+      <h1> Your Hosting </h1>
       <ul>
         <% @meals.each do |meal| %>
           <% if policy(meal).booking? %>

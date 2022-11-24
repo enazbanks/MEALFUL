@@ -4,3 +4,6 @@
 <%= turbo_stream.replace dom_id(@booking) do %>
   <%= render 'bookings/status_button', booking: @booking %>
 <% end %>
+<%= turbo_stream.replace 'navbar' do %>
+  <%= render 'layouts/navbar' %>
+<% end %>

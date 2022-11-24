@@ -1,5 +1,5 @@
 <div>
-  <strong> <%= "#{meal.name} has the following" %> </strong>
+  <strong> <%= link_to "#{meal.name} has the following", meal_path(meal) %> </strong>
   <ul>
     <% meal.bookings.each do |booking|%>
         <li>
