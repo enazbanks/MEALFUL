@@ -22,7 +22,7 @@ class MealsController < ApplicationController
   end
 
   def destroy
-    authorize @restaurant
+    authorize @meal
     @meal.delete
     redirect_to meals_path
   end
