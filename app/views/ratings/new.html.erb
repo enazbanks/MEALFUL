@@ -1,5 +1,6 @@
-<h1>Rate your meal expereince with: <%= @meal.name %></h1>
-<%= simple_form_for [@meal, @rating] do |f| %>
-  <%= f.input :value, collection: 1..5 %>
-  <%= f.submit %>
-<% end %>
+<%# <h1>Rate your meal experience with: <%= @meal.name</h1>  %>
+<%# <%= simple_form_for [@meal, @rating] do |f| %>
+  <%# <%= f.input :value, collection: 1..5 %>
+  <%# <%= f.submit %>
+<%# <% end %>
+<%= render "meals/new_rating" %>

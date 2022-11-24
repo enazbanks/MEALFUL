@@ -1,12 +1,26 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background-color: transparent;
 }
 
+// .navbar-inner {
+//   background-color:transparent;
+// }
+
 .navbar-lewagon .navbar-collapse {
+  background-color:transparent;
   flex-grow: 0;
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 80px;
+  width: 100px;
+  background: transparent !important;
+}
+
+.button {
+  justify-content: space-between;
+}
+
+nav ul li {
+  padding : 10px 10px 10px 10px;
 }

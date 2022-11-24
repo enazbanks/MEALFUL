@@ -9,11 +9,12 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.2/css/all.css">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%# <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-    <%= javascript_include_tag "/assets/application.js", "data-turbo-track": "reload", defer: true %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
   <body>
-    <%= render "layouts/navbar" %>
+    <%= render "layouts/navbar" unless @disable_nav %>
+    <%# # can remove navbar and place on every page individually %>
     <% flash.each do |type, msg| %>
       <div>
         <%= msg %>

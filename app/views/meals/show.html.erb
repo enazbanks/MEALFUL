@@ -2,15 +2,15 @@
   <div class="d-flex">
       <div class="meal-card">
         <div class="meal-image">
-          <% url = 'https://source.unsplash.com/random?' + @meal.category.split.join(",") %>
+          <% url = 'https://source.unsplash.com/random?' + @meal.category.split.join(",") + ' food' %>
           <%= image_tag url%>
         </div>
-        <%= link_to "Book this meal", new_meal_booking_path(@meal), class: "btn btn-primary"%>
       </div>
     <div class="d-flex flex-column mb-3 p-5">
       <div>
         <h1> <%= @meal.name %> </h1>
         <br>
+        <p> <%= @meal.location %> </p>
       </div>
 
       <h2> <strong> <%= @meal.category %> </strong> </h2>
@@ -45,6 +45,11 @@
           <%= "Unrated" %>
         <% end %>
       </div>
+      <% if policy(@meal).edit? %>
+          <%= link_to "Edit this meal", edit_meal_path(@meal), class: "btn btn-primary margin-top"%>
+        <% else %>
+          <%= link_to "Book this meal", new_meal_booking_path(@meal), class: "btn btn-primary margin-top" %>
+        <% end %>
     </div>
   </div>
   <% if policy(@meal).booking? %>

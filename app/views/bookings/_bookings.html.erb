@@ -1,5 +1,6 @@
 <div>
   <ul>
+    <% can_delete = true %>
     <% meal.bookings.each do |booking|%>
         <li>
           <%= "#{booking.user.first_name} is booked in for #{booking.date}" %>
@@ -25,6 +26,11 @@
             </ul>
           </div>
         <% end %>
+        <% can_delete = false if booking.confirmed? && booking.date < Date.today %>
+
     <% end %>
   </ul>
+    <% if can_delete %>
+        <%= link_to "Delete", meal_path(meal), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" %>
+    <% end %>
 </div>

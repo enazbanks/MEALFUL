@@ -1,4 +1,5 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <%# <div class="navbar-inner">> %>
   <div class="container-fluid">
     <%= link_to "/", class: "navbar-brand" do %>
       <%= image_tag "mealful_logo.png", alt: "Logo" %>
@@ -9,30 +10,31 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Host a meal", new_meal_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Bookings", "/bookings", class: "nav-link" %>
-          </li>
-          <li class="nav-item dropdown">
-            <%= image_tag "undraw_Female_avatar_re_l6cx.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Manage myMeals", my_meals_path, class: "dropdown-item"%>
-              <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
-            </div>
-          </li>
-        <% else %>
-          <li class="nav-item active">
-            <%= link_to "Sign up", "/users/sign_up", class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          <li>
-        <%end %>
-      </ul>
+        <ul class="navbar-nav me-auto">
+          <% if user_signed_in? %>
+            <li class="nav-item active">
+              <%= link_to "Host a meal", new_meal_path, class: "btn btn-light" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Bookings", "/bookings", class: "btn btn-light" %>
+            </li>
+            <li class="nav-item dropdown">
+              <%= image_tag "undraw_Female_avatar_re_l6cx.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <%= link_to "Manage myMeals", my_meals_path, class: "dropdown-item"%>
+                <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
+              </div>
+            </li>
+          <% else %>
+            <li class="nav-item active">
+              <%= link_to "Sign up", "/users/sign_up", class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            <li>
+          <%end %>
+        </ul>
     </div>
   </div>
+  <%# </div> %>
 </div>
