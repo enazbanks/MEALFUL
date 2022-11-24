@@ -6,4 +6,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  def total_pending
+    total = 0
+    meals.each do |meal|
+      total += meal.pending_bookings
+    end
+    total
+  end
 end
