@@ -8,6 +8,14 @@ class Meal < ApplicationRecord
     "#{min_size} - #{max_size}"
   end
 
+  def pending_bookings
+    total = 0
+    bookings.each do |booking|
+      total += 1 if booking.pending?
+    end
+    total
+  end
+
   def average_rating
     number = ratings.length
     if number.positive?
