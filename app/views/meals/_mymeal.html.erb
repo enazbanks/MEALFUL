@@ -36,7 +36,7 @@
         <%= link_to "Show this meal", meal_path(meal), class: "btn btn-primary" %>
       </p>
       <p>
-      <%= button_to "Edit", edit_meal_path(meal), class: "btn btn-primary"  %>
+      <%= link_to "Edit", edit_meal_path(meal), class: "btn btn-primary"  %>
       </p>
       <% if can_delete =! false %>
         <%= link_to "Delete", meal_path(meal), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger" %>
