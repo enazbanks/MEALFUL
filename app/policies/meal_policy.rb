@@ -29,7 +29,7 @@ class MealPolicy < ApplicationPolicy
   end
 
   def destroy?
-    record.user == user
+    (record.bookings.all? { |book| !book.upcoming_confirmed? }) && record.user == user
   end
 
   def my_meals?

@@ -58,6 +58,7 @@
         <% else %>
           <%= link_to "Book this meal", new_meal_booking_path(@meal), class: "btn btn-primary margin-top" %>
         <% end %>
+        <%= render 'meals/delete_button', meal: @meal %>
     </div>
   </div>
   <% if policy(@meal).booking? %>

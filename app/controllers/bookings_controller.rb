@@ -31,10 +31,13 @@ class BookingsController < ApplicationController
   def update
     @booking = Booking.find(params[:id])
     authorize @booking
-    if @booking.update(booking_params)
-      redirect_to bookings_path, status: :see_other, notice: "You've successfully updated your booking"
-    else
-      redirect_to bookings_path, status: :see_other, alert: "Something went wrong while updating booking"
+    respond_to do |format|
+      if @booking.update(booking_params)
+        format.turbo_stream
+        format.html { redirect_to bookings_path, status: :see_other, notice: "You've successfully updated your booking" }
+      else
+        format.html { redirect_to bookings_path, status: :see_other, alert: "Something went wrong while updating booking" }
+      end
     end
   end
 
