@@ -1,7 +1,7 @@
 <div>
   <li>
     <div>
-      <strong> <%= booking.meal.name %> </strong>
+      <strong> <%= link_to booking.meal.name, meal_path(booking.meal) %> </strong>
     </div>
     <%= "You are booked in for #{booking.date}" %>
     <%= "with #{booking.size}" %> <i class="fa-solid fa-people-group"></i>
