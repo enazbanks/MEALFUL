@@ -15,7 +15,7 @@
               <% Booking.statuses.keys.each do |status| %>
                 <li>
                   <%= link_to status,
-                              booking_path(booking, booking: {status: status}),
+                              bookings_path(booking, booking: {status: status}),
                               class: 'dropdown-item',
                               data: {
                                 turbo_method: :patch

@@ -24,6 +24,10 @@ class MealPolicy < ApplicationPolicy
     true
   end
 
+  def update?
+    record.user == user
+  end
+
   def my_meals?
     true
   end
