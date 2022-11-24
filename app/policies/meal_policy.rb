@@ -28,6 +28,10 @@ class MealPolicy < ApplicationPolicy
     record.user == user
   end
 
+  def destroy?
+    record.user == user
+  end
+
   def my_meals?
     true
   end

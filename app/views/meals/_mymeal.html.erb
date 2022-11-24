@@ -1,6 +1,6 @@
   <div class="col-md-4 p-2">
   <div class="card" style="width: 18rem;" >
-    <% url = 'https://source.unsplash.com/random?' + meal.category.split.join(",") %>
+    <% url = 'https://source.unsplash.com/random?' + meal.category.split.join(",") + ' food' %>
     <%= image_tag url, height: 300%>
     <div id="<%= dom_id meal %>" class="card-body">
       <p class="card-title">
@@ -17,6 +17,7 @@
         <br>
         <% total = 0 %>
         <% meal.bookings.each do |book|%>
+          <% can_delete = false if book.confirmed? && book.date < Date.today %>
           <% total += 1 if book.pending? %>
         <% end %>
         <%= "#{meal.bookings.length} bookings #{total} still pending" %>
@@ -27,10 +28,9 @@
         <%= link_to "Show this meal", meal_path(meal), class: "btn btn-primary" %>
       </p>
       <p>
-      <%= button_to "Edit", 'edit_meal_path(@meal)', class: "btn btn-primary"  %>
+      <%= button_to "Edit", edit_meal_path(meal), class: "btn btn-primary"  %>
       </p>
-              <%= link_to "Delete",
-                    meal_path(meal),
-                    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-                  %>
+      <% if can_delete =! false %>
+        <%= link_to "Delete", meal_path(meal), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+      <% end %>
   </div>

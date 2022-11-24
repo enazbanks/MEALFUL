@@ -1,6 +1,6 @@
 class MealsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
-  before_action :find_meal, only: [:show, :edit, :update, :read]
+  before_action :find_meal, only: [:show, :edit, :destroy, :update, :read]
 
   def index
     @meals = policy_scope(Meal)
@@ -13,6 +13,12 @@ class MealsController < ApplicationController
   def new
     @meal = Meal.new
     authorize @meal
+  end
+
+  def destroy
+    authorize @restaurant
+    @meal.delete
+    redirect_to meals_path
   end
 
   def create
