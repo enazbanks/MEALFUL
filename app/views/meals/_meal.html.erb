@@ -6,10 +6,10 @@
         <% else %>
           <% url = 'https://source.unsplash.com/random?' + meal.category.split.join(",") + ' food' %>
           <%= image_tag url, height: 300, crop: :fill %>
-          <% cloud = Cloudinary::Uploader.upload(url) %>
-          <% downloaded_image = Down.download(cloud["url"]) %>
-          <% meal.photo.attach(io: downloaded_image  , filename: "#{meal.name}.jpg") %>
-          <% url = 'https://source.unsplash.com/random?' + meal.category.split.join(",") + ' food' %>
+          <%# <% cloud = Cloudinary::Uploader.upload(url) %>
+          <%#downloaded_image = Down.download(cloud["url"]) %>
+          <%#meal.photo.attach(io: downloaded_image  , filename: "#{meal.name}.jpg") %>
+          <%# url = 'https://source.unsplash.com/random?' + meal.category.split.join(",") + ' food' %>
       <% end %>
 
     <div id="<%= dom_id meal %>" class="card-body">
