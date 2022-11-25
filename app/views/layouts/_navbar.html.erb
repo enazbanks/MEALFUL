@@ -2,7 +2,7 @@
   <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
     <%# <div class="navbar-inner">> %>
     <div class="container-fluid">
-      <%= link_to "/", class: "navbar-brand" do %>
+      <%= link_to "/", class: "navbar-brand", target:"_top" do %>
         <%= image_tag "mealful_logo.png", alt: "Logo" %>
       <% end %>
 
@@ -22,15 +22,18 @@
                 <%= link_to "Bookings", "/bookings", class: "btn btn-light" %>
               </li>
 
-              <li class="nav-item dropdown">
+              <li class="nav-item dropdown position-relative mx-3" style="z-index:1">
+               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                <%= current_user.total_pending %>
+                  <span class="visually-hidden">unread messages</span>
+                </span>
                 <%= image_tag "undraw_Female_avatar_re_l6cx.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                   <%= link_to "Manage myMeals", my_meals_path, class: "dropdown-item"%>
                   <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
                 </div>
               </li>
-              <strong> <h6 class="text-danger text-align-end"> <%= current_user.total_pending %> </h6> </strong>
-              <li class="nav-item dropdown">
+              <li class="nav-item dropdown ">
                 <%= link_to "#{current_user.first_name} #{current_user.last_name}", "#", class: "btn btn-light dropdown-toggle", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                   <%= link_to "Manage myMeals", my_meals_path, class: "dropdown-item"%>

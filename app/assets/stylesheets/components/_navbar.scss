@@ -3,6 +3,8 @@
   background-color: transparent;
   padding: 10px 5px 0px 0px;
   height: 70px;
+  // position: relative;
+  // position: fixed;
 }
 
 // .navbar-inner {
@@ -25,4 +27,10 @@
 
 nav ul li {
   padding : 10px 10px 10px 10px;
+}
+
+#navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
