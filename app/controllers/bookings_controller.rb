@@ -20,7 +20,7 @@ class BookingsController < ApplicationController
     authorize @booking
     # @booking.save # => true/false
     if @booking.save
-      redirect_to meal_path(@meal)
+      redirect_to "/bookings"
       flash[:notice] = 'Successfully Booked'
     else
       render :new, status: :unprocessable_entity

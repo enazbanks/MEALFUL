@@ -15,11 +15,13 @@
   <body>
     <%= render "layouts/navbar" unless @disable_nav %>
     <%# # can remove navbar and place on every page individually %>
-    <% flash.each do |type, msg| %>
-      <div>
-        <%= msg %>
-      </div>
-    <% end %>
+    <div style= 'z-index:1000' class= 'position-fixed top-0 left-0 w-100 p-4 pe-none d-flex justify-content-center align-items-center'>
+      <% flash.each do |type, msg| %>
+        <div class= "alert alert-success" role="alert">
+          <%= msg %>
+        </div>
+      <% end %>
+    </div>
     <%= yield %>
     <%= render 'layouts/footer' %>
   </body>
