@@ -1,13 +1,23 @@
-<div>
-  <li>
-    <div>
-      <strong> <%= link_to booking.meal.name, meal_path(booking.meal) %> </strong>
+<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 p-2">
+    <div class="card h-100">
+      <div id="<%= dom_id booking %>" class="card-body">
+        <p class="card-title">
+          <%= link_to booking.meal.name, meal_path(booking.meal) %>
+        </p>
+
+        <p class="card-title">
+          <%= "You are booked in for #{booking.date}" %>
+          <%= "with #{booking.size}" %> <i class="fa-solid fa-people-group"></i>
+        </p>
+
+        <p class="card-title">
+          <%= "Total cost $#{booking.price}" %>
+        </p>
+
+        <p class="card-title">
+          <strong><%= booking.status %></strong>
+        </p>
+
+      </div>
     </div>
-    <%= "You are booked in for #{booking.date}" %>
-    <%= "with #{booking.size}" %> <i class="fa-solid fa-people-group"></i>
-    <%= "Total cost $#{booking.price}" %>
-    <div>
-      <%= booking.status %>
-    </div>
-  </li>
 </div>
